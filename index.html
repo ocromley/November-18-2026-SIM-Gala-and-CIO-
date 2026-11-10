@@ -1032,17 +1032,25 @@
             .hero-content h1 { font-size: 2rem; }
             .box { padding: 1.5rem; margin: 1rem; }
             .award-info-box { padding: 1.25rem; }
-            .event-schedule { width: 100%; margin: 1.5rem auto; }
+            .event-schedule { width: 100%; margin: 1.25rem auto; }
             .event-schedule ul li {
-                flex-direction: column;
-                gap: 0.25rem;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.2rem;
+                padding: 0.75rem 0;
+                text-align: left;
             }
             .event-schedule time {
-                flex: 0 1 auto;
+                display: block;
+                font-size: 0.95rem;
+                white-space: nowrap;
             }
             .event-schedule ul li span {
+                display: block;
                 min-width: 0;
-                overflow-wrap: anywhere;
+                font-size: 0.95rem;
+                line-height: 1.45;
+                overflow-wrap: break-word;
             }
             .foundation-section { margin: 1rem auto; padding: 0 1rem; }
             .foundation-card { grid-template-columns: 1fr; padding: 1rem; }
