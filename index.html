@@ -257,11 +257,6 @@
             color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
         }
-        .foundation-section {
-            max-width: 1150px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
         .foundation-links {
             display: flex;
             justify-content: center;
@@ -341,56 +336,6 @@
             cursor: pointer;
         }
         .foundation-dialog-close:hover { color: var(--navy); }
-        .foundation-card {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1.25rem;
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 18px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: rgba(255,255,255,0.85);
-        }
-        .foundation-copy,
-        .foundation-qr {
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 16px;
-            background: rgba(255,255,255,0.08);
-        }
-        .foundation-copy h2 {
-            margin-bottom: 1rem;
-            color: var(--gold);
-            font-size: 1.25rem;
-        }
-        .foundation-copy p + p { margin-top: 1rem; }
-        .foundation-copy strong { color: var(--white); }
-        .foundation-qr {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .foundation-qr img {
-            width: min(100%, 180px);
-            height: auto;
-            padding: 8px;
-            border-radius: 14px;
-            background: var(--white);
-        }
-        .foundation-qr p { margin-top: 1rem; }
-        .foundation-qr strong { display: block; color: var(--gold); }
-        .foundation-qr a {
-            color: inherit;
-            text-decoration: none;
-        }
-        .foundation-qr a:hover strong { text-decoration: underline; }
-        .foundation-qr a:focus-visible {
-            outline: 2px solid var(--white);
-            outline-offset: 4px;
-            border-radius: 2px;
-        }
         .sponsors-grid {
             display: flex;
             justify-content: center;
@@ -1052,9 +997,6 @@
                 line-height: 1.45;
                 overflow-wrap: break-word;
             }
-            .foundation-section { margin: 1rem auto; padding: 0 1rem; }
-            .foundation-card { grid-template-columns: 1fr; padding: 1rem; }
-            .foundation-copy, .foundation-qr { padding: 1.25rem; }
             .foundation-links { flex-wrap: wrap; }
             .foundation-dialog { padding: 2.5rem 1.5rem; }
             .sponsors-grid { gap: 2rem; }
@@ -1098,7 +1040,7 @@
             <div class="hero-content">
                 <img src="CIO A.png" alt="CIO of the Year Awards event graphic" style="display: block; width: 100%; max-width: 640px; margin: 0 auto 2rem; border-radius: 12px;">
                 <h1>
-                    2026 SIM Gala and CIO of the Year Awards
+                    2026 <strong>SIM Chicago Gala</strong> and CIO of the Year Awards
                     <span>Celebrating Technology Leadership</span>
                 </h1>
                 <p class="hero-subtitle">
@@ -1108,7 +1050,7 @@
                     <div class="date-icon">📅</div>
                     <div class="date-text">
                         <strong>Wednesday, November 18, 2026</strong>
-                        <span>5:30 – 9:00 PM</span>
+                        <span>5:00 – 9:00 PM</span>
                     </div>
                 </div>
                 <div class="hero-location">
@@ -1127,22 +1069,6 @@
             </div>
         </div>
 
-        <section class="foundation-section" aria-labelledby="foundation-heading">
-            <div class="foundation-card">
-                <div class="foundation-copy">
-                    <h2 id="foundation-heading">Honor Tandy Green. Support the Next Generation of Technology Leaders.</h2>
-                    <p>SIM Chicago is naming its next scholarship award in honor of Tandy Green, a valued member of the Lenovo team and a dedicated supporter of SIM Chicago's Executive Women in Tech series, helping build a strong community of technology leaders.</p>
-                    <p>To honor Tandy's legacy, SIM Chicago will match donations made in her memory dollar for dollar, up to $5,000, supporting scholarships for technology students.</p>
-                    <p><strong>Double your impact.</strong> Scan the QR code to donate through the SIM Chicago Foundation in honor of Tandy Green.</p>
-                    <p>Thank you for helping carry Tandy's legacy forward.</p>
-                </div>
-                <div class="foundation-qr">
-                    <img src="Chicago_F-n_ QR.png" alt="QR code to donate to the SIM Chicago Foundation in honor of Tandy Green">
-                    <p>Scan to donate<a href="https://checkout.square.site/merchant/N72HVXQDSBPS6/checkout/J7XG4CZT6RAK3U3VH2O3SUMW?src=webqr" target="_blank" rel="noopener noreferrer"><strong>SIM Chicago Foundation</strong></a></p>
-                </div>
-            </div>
-        </section>
-
         <dialog class="foundation-dialog" id="foundation-dialog" aria-labelledby="foundation-dialog-title">
             <button type="button" class="foundation-dialog-close" aria-label="Close dialog" onclick="closeFoundationDialog()">×</button>
             <h2 id="foundation-dialog-title">SIM Foundation</h2>
@@ -1157,7 +1083,12 @@
             <div class="award-info-box" style="text-align: center;">
                 <img class="speaker-photo" src="mike-zafirovski.jpg" alt="Mike Zafirovski">
                 <h3><a href="https://www.linkedin.com/in/mikezafirovski/?isSelfProfile=false">Mike Zafirovski</a></h3>
-                <p>Our keynote speaker, Mike Zafirovski, served as President and CEO of Nortel, Motorola, and five GE businesses. He is a past Boeing Board member, philanthropist, and thought leader.</p>
+                <p style="text-align: center;"><strong>CEO / Founder / Board Member / Philanthropist</strong></p>
+                <p>Mike Zafirovski is the Founder, Chairman, and President of <strong>The Zaf Group (TZG)</strong>, a family office engaged in operating, investment, and advisory activities.</p>
+                <p>TZG's portfolio includes <strong>Tusker</strong>, a fast-growing national IT solutions platform based in Buffalo Grove, providing a broad range of advisory, professional, and technology solutions.</p>
+                <p>During his corporate career, Mike served as President and/or CEO at Nortel, Motorola, and five GE businesses. He served on the boards of Boeing, Stericycle, Apria Healthcare, Nortel, Motorola, and Blackstone portfolio companies.</p>
+                <p>Mike and his wife Robin established <strong>The Zafirovski Family Foundation</strong> in 2005, focusing on education, healthcare, faith-based ministries, and economic development.</p>
+                <p>A native of Macedonia, Mike is the co-founder and director of <strong>Macedonia 2025</strong>. In partnership with Northwestern University's Kellogg School of Management, the <strong>Zafirovski Executive Development Program</strong> has helped prepare more than 100 future CEOs and senior executives.</p>
             </div>
         </div>
         <div class="page-arrows">
@@ -1185,7 +1116,7 @@
             <div class="candidates-grid">
                 <div class="candidate-card-small">
                     <h4><a href="https://www.linkedin.com/in/teresa-andrea-msha-bsn-rn-24643129/">Teresa Andrea</a></h4>
-                    <span class="candidate-role">CIO, Silver Cross Hospital and Medical Center Vice President</span>
+                    <span class="candidate-role">VP &amp; CIO, Silver Cross Hospital &amp; Medical Center</span>
                 </div>
                 <div class="candidate-card-small">
                     <h4><a href="https://www.linkedin.com/in/sivabalus/">Siva Balu</a></h4>
@@ -1197,7 +1128,7 @@
                 </div>
                 <div class="candidate-card-small">
                     <h4><a href="https://www.linkedin.com/in/josephmadda/">Joe Madda</a></h4>
-                    <span class="candidate-role">Sr. VP & CIO, Chief Information Technology Officer, Box Partners LLC</span>
+                    <span class="candidate-role">Sr. VP & CIO, Chief Information Technology Officer, BOX Partners, LLC</span>
                 </div>
                 <div class="candidate-card-small">
                     <h4><a href="https://www.linkedin.com/in/modekurtivasu/">Vasu Modekurti</a></h4>
