@@ -157,7 +157,59 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 900px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .hero-graphics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: center;
+            gap: 1.5rem;
+            margin: 0 auto 2rem;
+        }
+        .hero-graphics img {
+            display: block;
+            width: 100%;
+            height: clamp(240px, 30vw, 380px);
+            object-fit: contain;
+            border-radius: 12px;
+        }
+        .hero-raffle-link {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+        .hero-raffle-link:focus-visible {
+            outline: 2px solid var(--white);
+            outline-offset: 3px;
+            border-radius: 12px;
+        }
+        .hero-foundation-flyer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-foundation-flyer .foundation-donation-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.55rem 1.5rem;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            color: var(--navy);
+            background: var(--gold);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .hero-foundation-flyer .foundation-donation-link:hover {
+            color: var(--navy);
+            background: var(--gold-light);
+        }
+        .hero-foundation-flyer .foundation-donation-link:focus-visible {
+            outline: 2px solid var(--white);
+            outline-offset: 3px;
         }
         .hero-badge {
             display: inline-block;
@@ -174,7 +226,7 @@
         }
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             color: var(--white);
             margin-bottom: 1rem;
             line-height: 1.1;
@@ -182,10 +234,10 @@
         .hero-content h1 span {
             color: var(--gold);
             display: block;
-            font-size: 0.6em;
+            font-size: 0.5em;
             font-family: 'Inter', sans-serif;
             font-weight: 300;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-top: 0.5rem;
         }
@@ -337,25 +389,32 @@
         }
         .foundation-dialog-close:hover { color: var(--navy); }
         .sponsors-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            justify-items: center;
+            align-items: start;
+            gap: 2rem 1rem;
+            max-width: 1000px;
+            margin: 2rem auto 0;
         }
         .sponsor-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
+            width: 100%;
+            max-width: 170px;
             color: inherit;
             text-decoration: none;
+            text-align: center;
         }
         .sponsor-logo {
+            width: 100%;
+            height: 70px;
+            max-width: 150px;
             opacity: 0.9;
             transition: all 0.3s ease;
-            max-height: 60px;
-            width: auto;
+            object-fit: contain;
         }
         .sponsor-logo:hover {
             opacity: 1;
@@ -365,6 +424,7 @@
             font-size: 0.85rem;
             color: var(--gray);
             font-weight: 500;
+            text-align: center;
         }
         .partnership-section {
             border-top: 1px solid var(--light-gray);
@@ -878,7 +938,15 @@
             max-width: 700px;
             margin: 2rem auto;
         }
+        .event-schedule h3 {
+            margin-bottom: 0.75rem;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+        }
         .event-schedule ul {
+            list-style: none;
+            padding: 0;
             margin-bottom: 0;
         }
         .event-schedule ul li {
@@ -898,6 +966,13 @@
         }
         .event-schedule ul li span {
             color: rgba(255,255,255,0.85);
+        }
+        .event-schedule a,
+        .event-schedule a:visited {
+            color: var(--gold);
+        }
+        .event-schedule a:hover {
+            color: var(--gold-light);
         }
         .event-details-grid {
             display: grid;
@@ -975,6 +1050,13 @@
         @media (max-width: 768px) {
             .page-nav { display: none; }
             .hero-content h1 { font-size: 2rem; }
+            .hero-graphics {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .hero-graphics img {
+                height: clamp(220px, 68vw, 340px);
+            }
             .box { padding: 1.5rem; margin: 1rem; }
             .award-info-box { padding: 1.25rem; }
             .event-schedule { width: 100%; margin: 1.25rem auto; }
@@ -1025,7 +1107,7 @@
         <nav class="page-nav">
             <button onclick="showPage('home')" class="active" id="btn-home">Home</button>
             <button onclick="showPage('candidates')" id="btn-candidates">Finalists</button>
-            <button onclick="showPage('details')" id="btn-details">Event Details</button>
+            <button onclick="showPage('details')" id="btn-details">Raffle Details</button>
             <button onclick="showPage('gallery')" id="btn-gallery">Photo Gallery</button>
             <button onclick="showPage('sponsors')" id="btn-sponsors">Sponsors</button>
             <button onclick="showPage('survey')" id="btn-survey">Survey</button>
@@ -1038,7 +1120,16 @@
     <div class="page active" id="page-home">
         <div class="hero-box">
             <div class="hero-content">
-                <img src="CIO A.png" alt="CIO of the Year Awards event graphic" style="display: block; width: 100%; max-width: 640px; margin: 0 auto 2rem; border-radius: 12px;">
+                <div class="hero-graphics">
+                    <img src="CIO A.png" alt="2026 CIO of the Year Awards Chicago event logo">
+                    <div class="hero-foundation-flyer">
+                        <img src="SIM Foundation Flyer.png" alt="SIM Foundation donation flyer with QR code">
+                        <a class="foundation-donation-link" href="https://checkout.square.site/merchant/N72HVXQDSBPS6/checkout/J7XG4CZT6RAK3U3VH2O3SUMW?src=webqr" target="_blank" rel="noopener noreferrer">Donate Here</a>
+                    </div>
+                    <button class="hero-raffle-link" type="button" onclick="showPage('details')" aria-label="View raffle items">
+                        <img src="raffle button.png" alt="Raffle Items">
+                    </button>
+                </div>
                 <h1>
                     2026 <strong>SIM Chicago Gala</strong> and CIO of the Year Awards
                     <span>Celebrating Technology Leadership</span>
@@ -1065,6 +1156,17 @@
                 <div class="foundation-links" aria-label="SIM information">
                     <button type="button" onclick="openFoundationDialog()">The SIM Foundation</button>
                     <a href="https://www.sim-chicago.org/page/Membership">SIM Membership</a>
+                </div>
+                <div class="event-schedule" aria-labelledby="event-itinerary-heading">
+                    <h3 id="event-itinerary-heading">Event Itinerary</h3>
+                    <ul>
+                        <li><time>5:00–6:00 PM</time><span>Executive Networking &amp; Cocktails</span></li>
+                        <li><time>6:15–6:30 PM</time><span>SIM Program</span></li>
+                        <li><time>6:30–7:00 PM</time><span>Dinner</span></li>
+                        <li><time>7:00–7:45 PM</time><span>Keynote Speaker, <a href="https://www.linkedin.com/in/mikezafirovski/">Mike Zafirovski</a></span></li>
+                        <li><time>7:45–8:30 PM</time><span>2026 CIO of the Year Awards</span></li>
+                        <li><time>8:30–9:00 PM</time><span>Executive Networking &amp; Cocktails</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1150,12 +1252,12 @@
         </div>
         <div class="page-arrows">
             <button onclick="showPage('home')">← Home</button>
-            <button onclick="showPage('details')">Next → Event Details</button>
+            <button onclick="showPage('details')">Next → Raffle Details</button>
         </div>
     </div>
 
 
-    <!-- PAGE 3: EVENT DETAILS -->
+    <!-- PAGE 3: RAFFLE DETAILS -->
     <div class="page" id="page-details">
         <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
             <button onclick="showPage('candidates')">← Finalists</button>
@@ -1163,44 +1265,48 @@
         </div>
         <div class="box">
             <div class="page-banner event-details-banner">
-                <h2>2026 SIM Gala and CIO of the Year Awards</h2>
+                <h2>Raffle Details</h2>
             </div>
             <div class="box-header">
-                <h2>2026 CIO of the Year Awards</h2>
+                <h2>Raffle Items</h2>
                 <div class="divider"></div>
-                <p>The 2026 CIO of the Year Awards recognize exceptional technology leadership</p>
+                <p>Explore the items generously donated by our raffle sponsors.</p>
             </div>
 
             <div class="award-info-box">
-                <div class="event-schedule" aria-labelledby="event-itinerary-heading">
-                    <h3 id="event-itinerary-heading">Event Itinerary</h3>
-                    <ul>
-                        <li><time>5:00–6:00 PM</time><span>Executive Networking &amp; Cocktails</span></li>
-                        <li><time>6:15–6:30 PM</time><span>SIM Program</span></li>
-                        <li><time>6:30–7:00 PM</time><span>Dinner</span></li>
-                        <li><time>7:00–7:45 PM</time><span>Keynote Speaker, Mike Zafirovski</span></li>
-                        <li><time>7:45–8:30 PM</time><span>2026 CIO of the Year Awards</span></li>
-                        <li><time>8:30–9:00 PM</time><span>Executive Networking &amp; Cocktails</span></li>
-                    </ul>
-                </div>
-
-                <h3>2026 CIO of the Year Awards</h3>
-                <p>The 2026 CIO of the Year Awards are among the most prestigious honors in the Chicago technology community. They recognize Chief Information Officers who have demonstrated exceptional leadership, innovation, and impact in their organizations and the broader technology ecosystem.</p>
-
-                <p style="margin-top: 1.5rem;"><strong style="color: var(--gold);">Selection Criteria:</strong></p>
                 <ul>
-                    <li>Demonstrated leadership in driving technology strategy and digital transformation</li>
-                    <li>Proven ability to deliver business value through innovative technology solutions</li>
-                    <li>Commitment to developing talent and building high-performing teams</li>
-                    <li>Contributions to the technology community through mentorship and thought leadership</li>
-                    <li>Excellence in aligning IT initiatives with organizational goals and objectives</li>
+                    <li><strong>PSM Partners:</strong> Sit back, pour a glass, and enjoy! This PSM-curated basket includes our very own PSM Bourbon, crafted by our Partners, two engraved bourbon glasses, three cigars, a PSM travel cigar holder, and an ice mold.</li>
+                    <li><strong>Cresteo:</strong> Rupt 4 in 1 (a smart tag, 2000mAh power bank, flashlight, and USB-C cable in a compact keychain) and a laptop backpack.</li>
+                    <li><strong>Plante Moran:</strong> Apple AirPods Pro 3 Wireless Earbuds with Active Noise Cancellation and a Plaud Note Pro AI Voice Recorder.</li>
+                    <li><strong>North Highland:</strong> Chicago Bears Caleb Williams jersey.</li>
+                    <li><strong>RSTAR Technologies:</strong> $100 Visa Gift Card.</li>
                 </ul>
-
-            </div>
-
-            <div style="margin-top: 3rem;">
-                <div class="box-header">
-                   
+                <h3>Raffle Prize Photos</h3>
+                <div class="gallery-grid">
+                    <figure>
+                        <img src="Bourbon and Cigar Basket Example.jpg" alt="Example bourbon and cigar basket from PSM Partners" loading="lazy">
+                        <figcaption>PSM Partners — Bourbon and Cigar Basket</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="RUPT 4in1 (CRESTEO).webp" alt="RUPT 4-in-1 smart keychain device from Cresteo" loading="lazy">
+                        <figcaption>Cresteo — RUPT 4-in-1</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Laptop Bag Example (CRESTEO).webp" alt="Example laptop backpack from Cresteo" loading="lazy">
+                        <figcaption>Cresteo — Laptop Backpack</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Plante Moran Raffle Prize A.png" alt="Apple AirPods Pro 3 Wireless Earbuds from Plante Moran" loading="lazy">
+                        <figcaption>Plante Moran — Apple AirPods Pro 3</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Plante Moran Raffle Prize B.png" alt="Plaud Note Pro AI Voice Recorder from Plante Moran" loading="lazy">
+                        <figcaption>Plante Moran — Plaud Note Pro</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="Visa Gift Card (RSTAR).avif" alt="$100 Visa Gift Card from RSTAR Technologies" loading="lazy">
+                        <figcaption>RSTAR Technologies — $100 Visa Gift Card</figcaption>
+                    </figure>
                 </div>
             </div>
         </div>
@@ -1213,7 +1319,7 @@
     <!-- PAGE 4: PHOTO GALLERY -->
     <div class="page" id="page-gallery">
         <div class="page-arrows" style="padding: 1rem 2rem; justify-content: space-between; background: var(--cream);">
-            <button onclick="showPage('details')">← Event Details</button>
+            <button onclick="showPage('details')">← Raffle Details</button>
             <button onclick="showPage('sponsors')">Next → Sponsors</button>
         </div>
         <div class="box">
@@ -1265,7 +1371,7 @@
             </section>
         </div>
         <div class="page-arrows">
-            <button onclick="showPage('details')">← Event Details</button>
+            <button onclick="showPage('details')">← Raffle Details</button>
             <button onclick="showPage('sponsors')">Next → Sponsors</button>
         </div>
     </div>
@@ -1288,7 +1394,7 @@
                 <p>This event is made possible through the support of our partners and sponsors.</p>
             </div>
             <div class="partnership-section">
-                <h3>Partnerships</h3>
+                <h3>PARTNERSHIPS</h3>
                 <p>SIM Chicago, AITP Chicago, and The Executives' Club of Chicago are event partners.</p>
                 <div class="partnership-logos">
                     <a href="https://www.sim-chicago.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit SIM Chicago">
@@ -1303,16 +1409,112 @@
                 </div>
             </div>
             <div class="partnership-section">
-                <h3>Event Sponsors</h3>
+                <h3>SPONSORS</h3>
             </div>
-            <div class="sponsors-grid">
-                <a class="sponsor-item" href="https://www.psmpartners.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="PSM.png" alt="PSM Technology Talent" class="sponsor-logo">
-                    <span class="sponsor-name">PSM Technology Talent</span>
-                </a>
+            <div class="sponsors-grid" aria-label="Event sponsors">
                 <a class="sponsor-item" href="https://business.comcast.com/" target="_blank" rel="noopener noreferrer">
                     <img src="CB.png" alt="Comcast Business" class="sponsor-logo">
                     <span class="sponsor-name">Comcast Business</span>
+                </a>
+                <a class="sponsor-item" href="https://www.tuskerco.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Tusker.png" alt="Tusker" class="sponsor-logo">
+                    <span class="sponsor-name">Tusker</span>
+                </a>
+                <a class="sponsor-item" href="https://www.sailpoint.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="SailPoint.png" alt="SailPoint" class="sponsor-logo">
+                    <span class="sponsor-name">SailPoint</span>
+                </a>
+                <a class="sponsor-item" href="https://www.evolutyz.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="evolutyz-logo (1).png" alt="Evolutyz" class="sponsor-logo">
+                    <span class="sponsor-name">Evolutyz</span>
+                </a>
+                <a class="sponsor-item" href="https://www.vsoftconsulting.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="VSoft Logo (2).png" alt="V-Soft Consulting" class="sponsor-logo">
+                    <span class="sponsor-name">V-Soft Consulting</span>
+                </a>
+                <a class="sponsor-item" href="https://themombagroup.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="The Momba Group Logo 11.3 (2).png" alt="The Momba Group" class="sponsor-logo">
+                    <span class="sponsor-name">The Momba Group</span>
+                </a>
+                <a class="sponsor-item" href="https://www.roberthalf.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Robert Half Logo.png" alt="Robert Half" class="sponsor-logo">
+                    <span class="sponsor-name">Robert Half</span>
+                </a>
+                <a class="sponsor-item" href="https://www.eclipse-telecom.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Eclipse Telecom Logo (2).png" alt="Eclipse" class="sponsor-logo">
+                    <span class="sponsor-name">Eclipse</span>
+                </a>
+                <a class="sponsor-item" href="https://www.psmpartners.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="PSM.png" alt="PSM Partners" class="sponsor-logo">
+                    <span class="sponsor-name">PSM Partners</span>
+                </a>
+                <a class="sponsor-item" href="https://cresteo.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Cresteo.png" alt="Cresteo" class="sponsor-logo">
+                    <span class="sponsor-name">Cresteo</span>
+                </a>
+                <a class="sponsor-item" href="https://www.redfoundry.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Red Foundry Logo (2).png" alt="Red Foundry" class="sponsor-logo">
+                    <span class="sponsor-name">Red Foundry</span>
+                </a>
+                <a class="sponsor-item" href="https://corelliancg.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Corellian-08 (1) (1) (3).png" alt="CCG" class="sponsor-logo">
+                    <span class="sponsor-name">CCG</span>
+                </a>
+                <a class="sponsor-item" href="https://www.stratospherenetworks.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="stratosphere-networks logo (1).png" alt="Stratosphere Networks" class="sponsor-logo">
+                    <span class="sponsor-name">Stratosphere Networks</span>
+                </a>
+                <a class="sponsor-item" href="https://www.judge.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="LOGO.jpg" alt="The Judge Group" class="sponsor-logo">
+                    <span class="sponsor-name">Judge Group</span>
+                </a>
+                <a class="sponsor-item" href="https://www.cbts.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="cbts.png" alt="CBTS" class="sponsor-logo">
+                    <span class="sponsor-name">CBTS</span>
+                </a>
+                <a class="sponsor-item" href="https://www.pwc.com/us/en.html" target="_blank" rel="noopener noreferrer">
+                    <img src="PwC_Company_Logo.svg.webp" alt="PwC" class="sponsor-logo">
+                    <span class="sponsor-name">PwC</span>
+                </a>
+                <a class="sponsor-item" href="https://www.yash.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="CMYK_YASH-Logo (C) Mark-01 (1).png" alt="YASH" class="sponsor-logo">
+                    <span class="sponsor-name">YASH</span>
+                </a>
+                <a class="sponsor-item" href="https://www.nvisia.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="nvisia logo (2).png" alt="NVISIA" class="sponsor-logo">
+                    <span class="sponsor-name">NVISIA</span>
+                </a>
+                <a class="sponsor-item" href="https://www.plantemoran.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Plante Moran.png" alt="Plante Moran" class="sponsor-logo">
+                    <span class="sponsor-name">Plante Moran</span>
+                </a>
+                <a class="sponsor-item" href="https://krasanconsulting.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="2026_Krasan_Logo_Horizontal_Color_EPS (2).png" alt="Krasan Consulting" class="sponsor-logo">
+                    <span class="sponsor-name">Krasan Consulting</span>
+                </a>
+                <a class="sponsor-item" href="https://www.genesis10.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="Genesis10 Logo_Black_Orange_RBG (2).png" alt="Genesis10" class="sponsor-logo">
+                    <span class="sponsor-name">Genesis10</span>
+                </a>
+                <a class="sponsor-item" href="https://www.northhighland.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="NH_Logo_Stacked (1) (1) (1).png" alt="North Highland" class="sponsor-logo">
+                    <span class="sponsor-name">North Highland</span>
+                </a>
+                <a class="sponsor-item" href="https://www.rstartec.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="rSTAR-logo__2 (1).png" alt="RSTAR Technologies" class="sponsor-logo">
+                    <span class="sponsor-name">RSTAR Technologies</span>
+                </a>
+                <a class="sponsor-item" href="https://www.lrs.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="LRS-Corporate-Logo (4) (1).jpg" alt="LRS" class="sponsor-logo">
+                    <span class="sponsor-name">LRS</span>
+                </a>
+                <a class="sponsor-item" href="https://www.extrahop.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="ExtraHop2024-Logo_color_medium (1) (1).png" alt="ExtraHop" class="sponsor-logo">
+                    <span class="sponsor-name">ExtraHop</span>
+                </a>
+                <a class="sponsor-item" href="https://mccannpartners.com/" target="_blank" rel="noopener noreferrer">
+                    <img src="McCann_15_Logo_Stack_wTagAsset 2@3x (1) (1).png" alt="McCann Partners" class="sponsor-logo">
+                    <span class="sponsor-name">McCann Partners</span>
                 </a>
             </div>
 
