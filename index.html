@@ -162,19 +162,25 @@
         }
         .hero-graphics {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            align-items: center;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
             gap: 1.5rem;
             margin: 0 auto 2rem;
         }
         .hero-graphics img {
             display: block;
             width: 100%;
-            height: clamp(240px, 30vw, 380px);
-            object-fit: contain;
+            height: auto;
+            aspect-ratio: 1.9;
+            object-fit: fill;
             border-radius: 12px;
         }
-        .hero-raffle-link {
+        .hero-foundation-flyer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-raffle-image-button {
             display: block;
             width: 100%;
             padding: 0;
@@ -182,15 +188,10 @@
             background: transparent;
             cursor: pointer;
         }
-        .hero-raffle-link:focus-visible {
+        .hero-raffle-image-button:focus-visible {
             outline: 2px solid var(--white);
             outline-offset: 3px;
             border-radius: 12px;
-        }
-        .hero-foundation-flyer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
         .hero-foundation-flyer .foundation-donation-link {
             display: inline-block;
@@ -541,6 +542,27 @@
             color: var(--gray);
             font-size: 0.9rem;
             text-align: center;
+        }
+        .raffle-prize-grid figcaption {
+            padding: 1rem;
+            color: var(--navy);
+            text-align: left;
+        }
+        .raffle-prize-grid figcaption strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-size: 1rem;
+        }
+        .raffle-prize-grid figcaption .raffle-value {
+            margin-bottom: 0.5rem;
+            color: #8a6d1d;
+            font-weight: 700;
+        }
+        .raffle-prize-grid figcaption p {
+            margin: 0;
+            color: var(--gray);
+            line-height: 1.55;
+            text-align: left;
         }
         .page-banner {
             position: relative;
@@ -1054,9 +1076,6 @@
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-            .hero-graphics img {
-                height: clamp(220px, 68vw, 340px);
-            }
             .box { padding: 1.5rem; margin: 1rem; }
             .award-info-box { padding: 1.25rem; }
             .event-schedule { width: 100%; margin: 1.25rem auto; }
@@ -1123,12 +1142,11 @@
                 <div class="hero-graphics">
                     <img src="CIO A.png" alt="2026 CIO of the Year Awards Chicago event logo">
                     <div class="hero-foundation-flyer">
-                        <img src="SIM Foundation Flyer.png" alt="SIM Foundation donation flyer with QR code">
-                        <a class="foundation-donation-link" href="https://checkout.square.site/merchant/N72HVXQDSBPS6/checkout/J7XG4CZT6RAK3U3VH2O3SUMW?src=webqr" target="_blank" rel="noopener noreferrer">Donate Here</a>
+                        <button class="hero-raffle-image-button" type="button" onclick="showPage('details')" aria-label="View Raffle Details">
+                            <img src="Raffle for SIM Chicago Philanthropy.png" alt="SIM Chicago Philanthropy raffle flyer">
+                        </button>
+                        <a class="foundation-donation-link" href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer">Donate Here</a>
                     </div>
-                    <button class="hero-raffle-link" type="button" onclick="showPage('details')" aria-label="View raffle items">
-                        <img src="raffle button.png" alt="Raffle Items">
-                    </button>
                 </div>
                 <h1>
                     2026 <strong>SIM Chicago Gala</strong> and CIO of the Year Awards
@@ -1268,44 +1286,73 @@
                 <h2>Raffle Details</h2>
             </div>
             <div class="box-header">
+                <h2>Fall Gala Raffle - 2026</h2>
+                <div class="divider"></div>
+                <p>Join SIM Chicago's raffle for a chance to win big while supporting SIM Chicago's Scholarship Program!</p>
+                <p>Thank you for your support. Every contribution, big or small, makes a significant difference. Donations are not tax deductible.</p>
+                <p>Winners need to be present at the time of the drawing.</p>
+            </div>
+            <div class="box-header">
                 <h2>Raffle Items</h2>
                 <div class="divider"></div>
                 <p>Explore the items generously donated by our raffle sponsors.</p>
             </div>
 
             <div class="award-info-box">
-                <ul>
-                    <li><strong>PSM Partners:</strong> Sit back, pour a glass, and enjoy! This PSM-curated basket includes our very own PSM Bourbon, crafted by our Partners, two engraved bourbon glasses, three cigars, a PSM travel cigar holder, and an ice mold.</li>
-                    <li><strong>Cresteo:</strong> Rupt 4 in 1 (a smart tag, 2000mAh power bank, flashlight, and USB-C cable in a compact keychain) and a laptop backpack.</li>
-                    <li><strong>Plante Moran:</strong> Apple AirPods Pro 3 Wireless Earbuds with Active Noise Cancellation and a Plaud Note Pro AI Voice Recorder.</li>
-                    <li><strong>North Highland:</strong> Chicago Bears Caleb Williams jersey.</li>
-                    <li><strong>RSTAR Technologies:</strong> $100 Visa Gift Card.</li>
-                </ul>
-                <h3>Raffle Prize Photos</h3>
-                <div class="gallery-grid">
+                <div class="gallery-grid raffle-prize-grid">
                     <figure>
-                        <img src="Bourbon and Cigar Basket Example.jpg" alt="Example bourbon and cigar basket from PSM Partners" loading="lazy">
-                        <figcaption>PSM Partners — Bourbon and Cigar Basket</figcaption>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for Plante Moran Apple AirPods Pro 3">
+                            <img src="Plante Moran Raffle Prize A.png" alt="Apple AirPods Pro 3 Wireless Earbuds from Plante Moran" loading="lazy">
+                        </a>
+                        <figcaption><strong>Plante Moran — Apple AirPods Pro 3</strong><strong class="raffle-value">Value: $220</strong><p>Apple AirPods Pro 3 Wireless Earbuds with Active Noise Cancellation.</p></figcaption>
                     </figure>
                     <figure>
-                        <img src="RUPT 4in1 (CRESTEO).webp" alt="RUPT 4-in-1 smart keychain device from Cresteo" loading="lazy">
-                        <figcaption>Cresteo — RUPT 4-in-1</figcaption>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for the Plante Moran Plaud Note Pro">
+                            <img src="Plante Moran Raffle Prize B.png" alt="Plaud Note Pro AI Voice Recorder from Plante Moran" loading="lazy">
+                        </a>
+                        <figcaption><strong>Plante Moran — Plaud Note Pro</strong><strong class="raffle-value">Value: $210</strong><p>Easily and efficiently transcribe speech in up to 112 languages with the Plaud Note Pro, a credit-card-sized, AI-powered transcription device that instantly translates captured audio to text.</p></figcaption>
                     </figure>
                     <figure>
-                        <img src="Laptop Bag Example (CRESTEO).webp" alt="Example laptop backpack from Cresteo" loading="lazy">
-                        <figcaption>Cresteo — Laptop Backpack</figcaption>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for Cresteo Apple AirPods 5">
+                            <img src="Cresto - Apple 5..jpg" alt="Apple AirPods 5 from Cresteo" loading="lazy">
+                        </a>
+                        <figcaption><strong>Cresteo — Apple AirPods 5</strong><strong class="raffle-value">Value: $160</strong><p>AirPods 5 Wireless Charging Case, Active Noise Cancellation, volume swipe, and longer battery life.</p></figcaption>
                     </figure>
                     <figure>
-                        <img src="Plante Moran Raffle Prize A.png" alt="Apple AirPods Pro 3 Wireless Earbuds from Plante Moran" loading="lazy">
-                        <figcaption>Plante Moran — Apple AirPods Pro 3</figcaption>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for the North Highland Chicago Bears Caleb Williams Jersey">
+                            <img src="Caleb Williams Jersey (North Highland).avif" alt="Chicago Bears Caleb Williams Jersey from North Highland" loading="lazy">
+                        </a>
+                        <figcaption><strong>North Highland — Chicago Bears Jersey</strong><strong class="raffle-value">Value: $150</strong><p>Chicago Bears Caleb Williams Jersey.</p></figcaption>
                     </figure>
                     <figure>
-                        <img src="Plante Moran Raffle Prize B.png" alt="Plaud Note Pro AI Voice Recorder from Plante Moran" loading="lazy">
-                        <figcaption>Plante Moran — Plaud Note Pro</figcaption>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for the United Center signed Blackhawks hockey stick">
+                            <img src="BH hokey.png" alt="Chicago Blackhawks hockey stick signed by the 2019-2020 team" loading="lazy">
+                        </a>
+                        <figcaption><strong>United Center — Blackhawks Hockey Stick</strong><strong class="raffle-value">Value: $375</strong><p>Chicago Blackhawks hockey stick signed by the 2019-2020 team!</p></figcaption>
                     </figure>
                     <figure>
-                        <img src="Visa Gift Card (RSTAR).avif" alt="$100 Visa Gift Card from RSTAR Technologies" loading="lazy">
-                        <figcaption>RSTAR Technologies — $100 Visa Gift Card</figcaption>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for the PSM Partners Bourbon Basket">
+                            <img src="Bourbon and Cigar Basket Example.jpg" alt="Example bourbon and cigar basket from PSM Partners" loading="lazy">
+                        </a>
+                        <figcaption><strong>PSM Partners — Bourbon Basket</strong><strong class="raffle-value">Value: $150</strong><p>Sit back, pour a glass, and enjoy! This PSM-curated basket includes our very own PSM Bourbon, crafted by our Partners, two engraved bourbon glasses, three cigars, a PSM travel cigar holder, and an ice mold.</p></figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for the CBTS RUPT 4-in-1 Smart Tag and laptop backpack">
+                            <img src="CBTS.jpg" alt="CBTS RUPT 4-in-1 Smart Tag and laptop backpack" loading="lazy">
+                        </a>
+                        <figcaption><strong>CBTS — RUPT 4-in-1 Smart Tag</strong><strong class="raffle-value">Value: $100</strong><p>Rupt 4 in 1 (a smart tag, 2000mAh power bank, flashlight, and USB-C cable in a compact keychain) and a laptop backpack.</p></figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for the RSTAR Technologies VISA Gift Card">
+                            <img src="Visa Gift Card (RSTAR).avif" alt="VISA Gift Card from RSTAR Technologies" loading="lazy">
+                        </a>
+                        <figcaption><strong>RSTAR Technologies — VISA Gift Card</strong><strong class="raffle-value">Value: $100</strong><p>Visa Gift Card providing a world of possibilities.</p></figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://www.zeffy.com/en-US/ticketing/fall-gala-raffle--2026" target="_blank" rel="noopener noreferrer" aria-label="Enter the raffle for the McCann Partners Amazon Gift Card">
+                            <img src="gift.Amazon.png" alt="$250 Amazon Gift Card from McCann Partners" loading="lazy">
+                        </a>
+                        <figcaption><strong>McCann Partners — Amazon Gift Card</strong><strong class="raffle-value">Value: $250</strong><p>Select your own gift from Amazon!</p></figcaption>
                     </figure>
                 </div>
             </div>
@@ -1729,7 +1776,7 @@
         const galleryLightbox = document.getElementById('gallery-lightbox');
         const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
 
-        document.querySelectorAll('.gallery-grid img').forEach(image => {
+        document.querySelectorAll('.gallery-grid:not(.raffle-prize-grid) img').forEach(image => {
             image.tabIndex = 0;
             image.setAttribute('role', 'button');
             image.setAttribute('aria-haspopup', 'dialog');
